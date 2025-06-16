@@ -3,16 +3,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   const GEONAMES_USERNAME = CONFIG.GEONAMES_USERNAME;
 
   const map = L.map("map", {
-    worldCopyJump: false,
-    center: [35.0, 135.0], // 日本を中心
+    center: [36.0, 138.0], // 日本を中心
     zoom: 3,
     minZoom: 2, // ズームアウト制限
-    maxBounds: [
-      [-85, -180], // 南西端（緯度, 経度）
-      [85, 180], // 北東端（緯度, 経度）
-    ],
-    maxBoundsViscosity: 1.0, // 1.0で「境界を越えようとすると跳ね返る」
-  }).setView([36.2048, 138.2529], 3); // 日本中心（緯度: 北緯36度, 経度: 東経138度）
+  });
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "© OpenStreetMap contributors",

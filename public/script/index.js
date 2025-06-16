@@ -66,12 +66,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   function init() {
     document.getElementById("lat").textContent = "取得中...";
     document.getElementById("lng").textContent = "取得中...";
-    document.getElementById("weather").textContent = "取得中...";
     document.getElementById("country").textContent = "取得中...";
     document.getElementById("region").textContent = "取得中...";
     document.getElementById("currency").textContent = "取得中...";
     document.getElementById("language").textContent = "取得中...";
     document.getElementById("flag").textContent = "取得中...";
+    document.getElementById("weather").textContent = "取得中...";
     document.getElementById("time").textContent = "取得中...";
   }
 
@@ -84,12 +84,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       const countryInfo = await fetchCountryInfo(locationDetails.countryCode);
       if (!countryInfo) throw new Error("国情報取得失敗");
 
-      // 通貨と通貨名（日本語）取得
+      // 通貨取得
       const currencyCode = Object.keys(countryInfo.currencies)[0];
       const symbol = `(${countryInfo.currencies[currencyCode]["symbol"]})` || "";
       const currency = `${currencyMap[currencyCode] || currencyCode}${symbol}`;
 
-      // 言語と日本語名取得
+      // 言語取得
       const langCode = Object.values(countryInfo.languages)[0];
       const language = languageMap[langCode] || langCode;
 
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     return {
       countryCode: address.country_code ? address.country_code.toUpperCase() : null, // ISOコード（例：JP, USなど）
       countryName: address.country ? address.country : null, // 国名
-      region: address.state || address.province || address.county || null, // 都道府県、または郡レベル
+      region: address.state || address.province || address.county || null, // 地域名
     };
   }
 

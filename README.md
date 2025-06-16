@@ -72,7 +72,7 @@ docker-compose up --build
 ```
 ├─.vscode                   # VS Codeの設定フォルダ
 ├─nginx                     # nginxのフォルダ
-└─public
+└─docs
     │  index.html            # メインの画面
     │
     ├─assets

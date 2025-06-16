@@ -104,9 +104,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       // 言語取得
       const langCode = Object.values(countryInfo.languages)[0];
       const language = languageMap[langCode] || langCode;
-      console.log("----------");
-      console.log(languageMap);
-      console.log("----------");
 
       document.getElementById("country").textContent = locationDetails.countryName;
       document.getElementById("region").textContent = locationDetails.region;

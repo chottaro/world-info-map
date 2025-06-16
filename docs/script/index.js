@@ -48,10 +48,10 @@ document.addEventListener("DOMContentLoaded", async function () {
    * 通貨と言語は日本語で取得できなかったのでjsonファイルを読み込む
    */
   async function loadJsonMaps() {
-    const currencyRes = await fetch("assets/currency_ja.json");
+    const currencyRes = await fetch("/assets/currency_ja.json");
     currencyMap = await currencyRes.json();
 
-    const languageRes = await fetch("assets/language_ja.json");
+    const languageRes = await fetch("/assets/language_ja.json");
     languageMap = await languageRes.json();
   }
 

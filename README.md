@@ -15,7 +15,7 @@
 地図上の国や地域を可視化し、天気や言語など多角的な情報を取得できるインタラクティブなツールです。
 
 ## ▶️ デモ
-https://chottaro.github.io/world-info-map
+https://chottaro.github.io/world-info-map \
 ※ デモでは天気と現地時刻は取得できません。
 
 ## 🛠️ 使用技術

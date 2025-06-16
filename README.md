@@ -59,7 +59,7 @@ const CONFIG = {
   GEONAMES_USERNAME: "GeoNamesのユーザー名",
 };
 ```
-※ `.gitignore` により `config.js` はリポジトリに含まれません。
+⚠️ 注意: `.gitignore` により `config.js` はリポジトリに含まれません。
 
 ### 📘 利用方法
 ```

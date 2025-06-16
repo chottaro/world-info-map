@@ -50,10 +50,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   async function loadJsonMaps() {
     const base_path = window.location.pathname.replace(/\/[^\/]*$/, "");
 
-    const currencyUrl = `${base_path}/assets/currency_ja.json`;
-    const languageUrl = `${base_path}/assets/language_ja.json`;
+    const currencyRes = await fetch(`${base_path}/assets/currency_ja.json`);
+    currencyMap = await currencyRes.json();
 
-    const [languageMap, currencyMap] = await Promise.all([fetch(currencyUrl), fetch(languageUrl)]);
+    const languageRes = await fetch(`${base_path}/assets/language_ja.json`);
+    languageMap = await languageRes.json();
   }
 
   /**
@@ -103,6 +104,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       // 言語取得
       const langCode = Object.values(countryInfo.languages)[0];
       const language = languageMap[langCode] || langCode;
+      console.log("----------");
+      console.log(languageMap);
+      console.log("----------");
 
       document.getElementById("country").textContent = locationDetails.countryName;
       document.getElementById("region").textContent = locationDetails.region;

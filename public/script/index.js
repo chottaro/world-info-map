@@ -44,6 +44,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     await setCurrentTime(lat, lng);
   });
 
+  /**
+   * 通貨と言語は日本語で取得できなかったのでjsonファイルを読み込む
+   */
   async function loadJsonMaps() {
     const currencyRes = await fetch("../assets/currency_ja.json");
     currencyMap = await currencyRes.json();
@@ -52,11 +55,19 @@ document.addEventListener("DOMContentLoaded", async function () {
     languageMap = await languageRes.json();
   }
 
+  /**
+   * 地図を1回転させるごとに座標が360度前後するため、各種情報が取得できるように-180〜180の範囲に丸める（360度周期の世界地図対応）
+   *
+   * @param {*} lng 経度
+   * @returns 丸められた経度
+   */
   function normalizeLng(lng) {
-    // -180〜180の範囲に丸める（360度周期の世界地図対応）
     return ((((lng + 180) % 360) + 360) % 360) - 180;
   }
 
+  /**
+   * 各種情報を取得中状態にする
+   */
   function init() {
     document.getElementById("lat").textContent = "取得中...";
     document.getElementById("lng").textContent = "取得中...";
@@ -69,7 +80,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.getElementById("time").textContent = "取得中...";
   }
 
-  // 国に関する情報を取得する
+  /**
+   * 国に関する情報を取得・設定する
+   *
+   * @param {*} lat 緯度
+   * @param {*} lng 経度
+   */
   async function setLocationInfo(lat, lng) {
     try {
       const locationDetails = await getLocationDetails(lat, lng);
@@ -102,6 +118,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
+  /**
+   * 地域情報を取得する
+   *
+   * @param {*} lat 緯度
+   * @param {*} lng 経度
+   * @returns 地域情報(ISOコード・国名・地域名)
+   */
   async function getLocationDetails(lat, lng) {
     const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
     const res = await fetch(url, { headers: { "User-Agent": "various-map-app" } });
@@ -115,6 +138,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
   }
 
+  /**
+   * 国に関する情報を取得する
+   *
+   * @param {*} countryCode ISOコード
+   * @returns　国に関する情報
+   */
   async function fetchCountryInfo(countryCode) {
     const url = `https://restcountries.com/v3.1/alpha/${countryCode}`;
     const res = await fetch(url);
@@ -122,6 +151,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     return data[0]; // 配列の1番目に対象国情報
   }
 
+  /**
+   * お天気情報を取得・設定する
+   *
+   * @param {*} lat 緯度
+   * @param {*} lng 経度
+   */
   async function setWeather(lat, lng) {
     try {
       const weather = await fetchWeather(lat, lng);
@@ -136,13 +171,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
+  /**
+   * お天気情報を取得する
+   *
+   * @param {*} lat 緯度
+   * @param {*} lng 経度
+   * @returns お天気情報
+   */
   async function fetchWeather(lat, lng) {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${OPENWEATHER_API_KEY}&units=metric&lang=ja`;
     const res = await fetch(url);
     return await res.json();
   }
 
-  // 現地時刻の取得と表示
+  /**
+   * 現在時刻を取得・設定する
+   *
+   * @param {*} lat 緯度
+   * @param {*} lng　経度
+   */
   async function setCurrentTime(lat, lng) {
     try {
       const res = await fetchCurrentTime(lat, lng);
@@ -158,6 +205,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
+  /**
+   * 時刻情報を取得する
+   *
+   * @param {*} lat 緯度
+   * @param {*} lng 経度
+   * @returns 時刻情報
+   */
   async function fetchCurrentTime(lat, lng) {
     const url = `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=${GEONAMES_USERNAME}`;
     return await fetch(url);

@@ -16,6 +16,7 @@
 
 ## ▶️ デモ
 https://chottaro.github.io/world-info-map
+※ デモでは天気と現地時刻は取得できません。
 
 ## 🛠️ 使用技術
 | 概要  | API |
@@ -25,7 +26,7 @@ https://chottaro.github.io/world-info-map
 | 地域情報(ISOコード・国名・地域名)  | [Nominatim](https://nominatim.org/)  |
 | 国情報(通貨・言語・国旗)  | [REST Countries](https://restcountries.com/)  |
 | 天気情報  | [OpenWeather](https://openweathermap.org/)  |
-| 日時情報  | [GeoNames](https://www.geonames.org/)  |
+| 現地時刻情報  | [GeoNames](https://www.geonames.org/)  |
 
 
 ## 🚀 機能

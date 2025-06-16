@@ -50,20 +50,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   async function loadJsonMaps() {
     const base_path = window.location.pathname.replace(/\/[^\/]*$/, "");
 
-    console.log("------------");
-    console.log(window.location);
-    console.log("------------");
-    console.log(window.location.pathname);
-    console.log("------------");
-    console.log(base_path);
-    console.log("------------");
-
-    // const currencyRes = await fetch("/assets/currency_ja.json");
-    // currencyMap = await currencyRes.json();
-
-    // const languageRes = await fetch("/assets/language_ja.json");
-    // languageMap = await languageRes.json();
-
     const currencyUrl = `${base_path}/assets/currency_ja.json`;
     const languageUrl = `${base_path}/assets/language_ja.json`;
 

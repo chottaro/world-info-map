@@ -1,15 +1,5 @@
 import { useEffect } from "react";
-import "leaflet/dist/leaflet.css";
-import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
-import iconUrl from "leaflet/dist/images/marker-icon.png";
-import shadowUrl from "leaflet/dist/images/marker-shadow.png";
-import L from "leaflet";
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: iconRetinaUrl,
-  iconUrl: iconUrl,
-  shadowUrl: shadowUrl,
-});
+import "leaflet";
 
 function App() {
   useEffect(() => {

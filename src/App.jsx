@@ -220,7 +220,7 @@ function App() {
      * @returns 時刻情報
      */
     async function fetchCurrentTime(lat, lng) {
-      const url = `http://api.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=${geonamesUsername}`;
+      const url = `https://secure.geonames.org/timezoneJSON?lat=${lat}&lng=${lng}&username=${geonamesUsername}`;
       return await fetch(url);
     }
 
